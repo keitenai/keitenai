@@ -1,20 +1,21 @@
-//======= rAthena Script =====================================
+//======= rAthena Script ===================================================
 //= Atcommand whois
-//===== By: ================================================== 
+//===== By: ================================================================
 //= Keitenai
-//===== Current Version: ===================================== 
-//= 1.0
-//===== Compatible With: ===================================== 
+//===== Current Version: ===================================================
+//= 1.2
+//===== Compatible With: ===================================================
 //= rAthena SVN
-//===== Description: ========================================= 
+//===== Description: =======================================================
 //= Tracking names from accounts which is linked to the
 //= IP address of the player being traced on.
-//= This script can also see the current online character
-//= of the player.
-//= Note: Tracking is limited to last IP used by the player.
-//===== Additional Comments: ================================= 
+//= This script can also see the current online character of the player.
+//=    Note: Tracking is limited to last IP used by the player.
+//===== Additional Comments: ===============================================
 //= 1.0 First version.
-//============================================================ 
+//= 1.1 cleaned up a bunch of "if". thanks to @Emistry.
+//= 1.2 Returns escaped form of the given string value. thanks to @Emistry.
+//==========================================================================
 
 -	script	whois_command	-1,{
 OnInit:
@@ -29,11 +30,11 @@ end;
 .@command$ = strtolower(.@atcmd_parameters$[0]);
 .@name$ = implode(.@atcmd_parameters$, " ");
 
-if(query_sql("SELECT `account_id` FROM `char` WHERE `name` = '"+.@name$+"'",.@acc_ID$)){
+if(query_sql("SELECT `account_id` FROM `char` WHERE `name` = '"+escape_sql(.@name$)+"'",.@acc_ID$)){
 if(.@acc_ID$=="")
-	query_sql("SELECT `account_id` FROM `char` WHERE `char_id` = '"+getcharid(0,.@name$)+"'",.@acc_ID$);
-query_sql("SELECT `last_ip` FROM `login` WHERE `account_id` = '"+.@acc_ID$+"'",.@ipadd$);
-	if(query_sql("SELECT `account_id` FROM `login` WHERE `login`.`last_ip` = '"+.@ipadd$+"'",.@accid)){
+	query_sql("SELECT `account_id` FROM `char` WHERE `char_id` = '"+escape_sql(getcharid(0,.@name$))+"'",.@acc_ID$);
+query_sql("SELECT `last_ip` FROM `login` WHERE `account_id` = '"+escape_sql(.@acc_ID$)+"'",.@ipadd$);
+	if(query_sql("SELECT `account_id` FROM `login` WHERE `login`.`last_ip` = '"+escape_sql(.@ipadd$)+"'",.@accid)){
 		set .@arrayset,getarraysize(.@accid);
 		if(.@arrayset > 40){
 			mes " ","^FF0000ERROR!^000000","^FF0000Too many accounts!^000000","[ "+.@arrayset+" ] accounts detected.";
@@ -51,7 +52,7 @@ query_sql("SELECT `last_ip` FROM `login` WHERE `account_id` = '"+.@acc_ID$+"'",.
 					for( set .@j,0; .@j<=getarraysize(.@acid); set .@j,.@j+1 ){
 						if(.@accid[.@i])
 						mes "^FF0000====== Account ID :^000000 ^0000FF"+.@accid[.@i]+"^000000 ^FF0000======^000000";
-						if(query_sql("SELECT `online` FROM `char` WHERE `name`='"+.@name$[.@j]+"'",.@Online) && .@Online==1){
+						if(query_sql("SELECT `online` FROM `char` WHERE `name`='"+escape_sql(.@name$[.@j])+"'",.@Online) && .@Online==1){
 							mes .@name$[.@j]+"^19C319(ON)^000000";
 							set .@Online,0;
 						} else {
