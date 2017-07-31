@@ -1,0 +1,106 @@
+//======= rAthena Script =====================================
+//= Atcommand whois
+//===== By: ================================================== 
+//= Keitenai
+//===== Current Version: ===================================== 
+//= 1.0
+//===== Compatible With: ===================================== 
+//= rAthena SVN
+//===== Description: ========================================= 
+//= Tracking names from accounts which is linked to the
+//= IP address of the player being traced on.
+//= This script can also see the current online character
+//= of the player.
+//= Note: Tracking is limited to last IP used by the player.
+//===== Additional Comments: ================================= 
+//= 1.0 First version.
+//============================================================ 
+
+-	script	whois_command	-1,{
+OnInit:
+	bindatcmd("whois",strnpcinfo(0)+"::OnWhoIs",99);
+end;
+
+OnWhoIs:
+if(!getarraysize(.@atcmd_parameters$)){
+	message strcharinfo(0), "@whois failed.";
+end;
+}
+.@command$ = strtolower(.@atcmd_parameters$[0]);
+set .@pa,getarraysize(.@atcmd_parameters$);
+if(.@pa==15)
+.@name$ = .@atcmd_parameters$[0]+" "+.@atcmd_parameters$[1]+" "+.@atcmd_parameters$[2]+" "+.@atcmd_parameters$[3]+" "+.@atcmd_parameters$[4]+" "+.@atcmd_parameters$[5]+" "+.@atcmd_parameters$[6]+" "+.@atcmd_parameters$[7]+" "+.@atcmd_parameters$[8]+" "+.@atcmd_parameters$[9]+" "+.@atcmd_parameters$[10]+" "+.@atcmd_parameters$[11]+" "+.@atcmd_parameters$[12]+" "+.@atcmd_parameters$[13]+" "+.@atcmd_parameters$[14];
+if(.@pa==14)
+.@name$ = .@atcmd_parameters$[0]+" "+.@atcmd_parameters$[1]+" "+.@atcmd_parameters$[2]+" "+.@atcmd_parameters$[3]+" "+.@atcmd_parameters$[4]+" "+.@atcmd_parameters$[5]+" "+.@atcmd_parameters$[6]+" "+.@atcmd_parameters$[7]+" "+.@atcmd_parameters$[8]+" "+.@atcmd_parameters$[9]+" "+.@atcmd_parameters$[10]+" "+.@atcmd_parameters$[11]+" "+.@atcmd_parameters$[12]+" "+.@atcmd_parameters$[13];
+if(.@pa==13)
+.@name$ = .@atcmd_parameters$[0]+" "+.@atcmd_parameters$[1]+" "+.@atcmd_parameters$[2]+" "+.@atcmd_parameters$[3]+" "+.@atcmd_parameters$[4]+" "+.@atcmd_parameters$[5]+" "+.@atcmd_parameters$[6]+" "+.@atcmd_parameters$[7]+" "+.@atcmd_parameters$[8]+" "+.@atcmd_parameters$[9]+" "+.@atcmd_parameters$[10]+" "+.@atcmd_parameters$[11]+" "+.@atcmd_parameters$[12];
+if(.@pa==12)
+.@name$ = .@atcmd_parameters$[0]+" "+.@atcmd_parameters$[1]+" "+.@atcmd_parameters$[2]+" "+.@atcmd_parameters$[3]+" "+.@atcmd_parameters$[4]+" "+.@atcmd_parameters$[5]+" "+.@atcmd_parameters$[6]+" "+.@atcmd_parameters$[7]+" "+.@atcmd_parameters$[8]+" "+.@atcmd_parameters$[9]+" "+.@atcmd_parameters$[10]+" "+.@atcmd_parameters$[11];
+if(.@pa==11)
+.@name$ = .@atcmd_parameters$[0]+" "+.@atcmd_parameters$[1]+" "+.@atcmd_parameters$[2]+" "+.@atcmd_parameters$[3]+" "+.@atcmd_parameters$[4]+" "+.@atcmd_parameters$[5]+" "+.@atcmd_parameters$[6]+" "+.@atcmd_parameters$[7]+" "+.@atcmd_parameters$[8]+" "+.@atcmd_parameters$[9]+" "+.@atcmd_parameters$[10];
+if(.@pa==10)
+.@name$ = .@atcmd_parameters$[0]+" "+.@atcmd_parameters$[1]+" "+.@atcmd_parameters$[2]+" "+.@atcmd_parameters$[3]+" "+.@atcmd_parameters$[4]+" "+.@atcmd_parameters$[5]+" "+.@atcmd_parameters$[6]+" "+.@atcmd_parameters$[7]+" "+.@atcmd_parameters$[8]+" "+.@atcmd_parameters$[9];
+if(.@pa==9)
+.@name$ = .@atcmd_parameters$[0]+" "+.@atcmd_parameters$[1]+" "+.@atcmd_parameters$[2]+" "+.@atcmd_parameters$[3]+" "+.@atcmd_parameters$[4]+" "+.@atcmd_parameters$[5]+" "+.@atcmd_parameters$[6]+" "+.@atcmd_parameters$[7]+" "+.@atcmd_parameters$[8];
+if(.@pa==8)
+.@name$ = .@atcmd_parameters$[0]+" "+.@atcmd_parameters$[1]+" "+.@atcmd_parameters$[2]+" "+.@atcmd_parameters$[3]+" "+.@atcmd_parameters$[4]+" "+.@atcmd_parameters$[5]+" "+.@atcmd_parameters$[6]+" "+.@atcmd_parameters$[7];
+if(.@pa==7)
+.@name$ = .@atcmd_parameters$[0]+" "+.@atcmd_parameters$[1]+" "+.@atcmd_parameters$[2]+" "+.@atcmd_parameters$[3]+" "+.@atcmd_parameters$[4]+" "+.@atcmd_parameters$[5]+" "+.@atcmd_parameters$[6];
+if(.@pa==6)
+.@name$ = .@atcmd_parameters$[0]+" "+.@atcmd_parameters$[1]+" "+.@atcmd_parameters$[2]+" "+.@atcmd_parameters$[3]+" "+.@atcmd_parameters$[4]+" "+.@atcmd_parameters$[5];
+if(.@pa==5)
+.@name$ = .@atcmd_parameters$[0]+" "+.@atcmd_parameters$[1]+" "+.@atcmd_parameters$[2]+" "+.@atcmd_parameters$[3]+" "+.@atcmd_parameters$[4];
+if(.@pa==4)
+.@name$ = .@atcmd_parameters$[0]+" "+.@atcmd_parameters$[1]+" "+.@atcmd_parameters$[2]+" "+.@atcmd_parameters$[3];
+if(.@pa==3)
+.@name$ = .@atcmd_parameters$[0]+" "+.@atcmd_parameters$[1]+" "+.@atcmd_parameters$[2];
+if(.@pa==2)
+.@name$ = .@atcmd_parameters$[0]+" "+.@atcmd_parameters$[1];
+if(.@pa==1)
+.@name$ = .@atcmd_parameters$[0];
+
+if(query_sql("SELECT `account_id` FROM `char` WHERE `name` = '"+.@name$+"'",.@acc_ID$)){
+if(.@acc_ID$=="")
+	query_sql("SELECT `account_id` FROM `char` WHERE `char_id` = '"+getcharid(0,.@name$)+"'",.@acc_ID$);
+query_sql("SELECT `last_ip` FROM `login` WHERE `account_id` = '"+.@acc_ID$+"'",.@ipadd$);
+	if(query_sql("SELECT `account_id` FROM `login` WHERE `login`.`last_ip` = '"+.@ipadd$+"'",.@accid)){
+		set .@arrayset,getarraysize(.@accid);
+		if(.@arrayset > 40){
+			mes " ","^FF0000ERROR!^000000","^FF0000Too many accounts!^000000","[ "+.@arrayset+" ] accounts detected.";
+			mes "^888888==========================^000000";
+			for( set .@i,0; .@i<=.@arrayset; set .@i,.@i+1 ){
+				if(.@accid[.@i] != 0)
+					mes "^0000FF"+.@accid[.@i]+"^000000";
+			}
+			mes "^888888==========================^000000";
+			close;
+		}
+		for( set .@i,0; .@i<=.@arrayset; set .@i,.@i+1 ){
+			if(.@accid[.@i] != 0){
+				if(query_sql("SELECT DISTINCT `name`,`account_id` FROM `char` WHERE `char`.`account_id`='"+.@accid[.@i]+"' ",.@name$,.@acid)){
+					for( set .@j,0; .@j<=getarraysize(.@acid); set .@j,.@j+1 ){
+						if(.@accid[.@i])
+						mes "^FF0000====== Account ID :^000000 ^0000FF"+.@accid[.@i]+"^000000 ^FF0000======^000000";
+						if(query_sql("SELECT `online` FROM `char` WHERE `name`='"+.@name$[.@j]+"'",.@Online) && .@Online==1){
+							mes .@name$[.@j]+"^19C319(ON)^000000";
+							set .@Online,0;
+						} else {
+							mes .@name$[.@j];
+							dispbottom .@name$[.@j];
+						}
+						set .@accid[.@i],0;
+						set .@name$[.@j],"";
+					}
+				}
+			}
+		}
+		mes "^FF0000==========================^000000";
+		dispbottom "IP Trace: "+.@ipadd$;
+		dispbottom "Accounts Found : "+.@arrayset;
+		close;
+	}
+}
+	message strcharinfo(0),"Player Name Not found.";
+end;
+}
+
