@@ -27,37 +27,7 @@ if(!getarraysize(.@atcmd_parameters$)){
 end;
 }
 .@command$ = strtolower(.@atcmd_parameters$[0]);
-set .@pa,getarraysize(.@atcmd_parameters$);
-if(.@pa==15)
-.@name$ = .@atcmd_parameters$[0]+" "+.@atcmd_parameters$[1]+" "+.@atcmd_parameters$[2]+" "+.@atcmd_parameters$[3]+" "+.@atcmd_parameters$[4]+" "+.@atcmd_parameters$[5]+" "+.@atcmd_parameters$[6]+" "+.@atcmd_parameters$[7]+" "+.@atcmd_parameters$[8]+" "+.@atcmd_parameters$[9]+" "+.@atcmd_parameters$[10]+" "+.@atcmd_parameters$[11]+" "+.@atcmd_parameters$[12]+" "+.@atcmd_parameters$[13]+" "+.@atcmd_parameters$[14];
-if(.@pa==14)
-.@name$ = .@atcmd_parameters$[0]+" "+.@atcmd_parameters$[1]+" "+.@atcmd_parameters$[2]+" "+.@atcmd_parameters$[3]+" "+.@atcmd_parameters$[4]+" "+.@atcmd_parameters$[5]+" "+.@atcmd_parameters$[6]+" "+.@atcmd_parameters$[7]+" "+.@atcmd_parameters$[8]+" "+.@atcmd_parameters$[9]+" "+.@atcmd_parameters$[10]+" "+.@atcmd_parameters$[11]+" "+.@atcmd_parameters$[12]+" "+.@atcmd_parameters$[13];
-if(.@pa==13)
-.@name$ = .@atcmd_parameters$[0]+" "+.@atcmd_parameters$[1]+" "+.@atcmd_parameters$[2]+" "+.@atcmd_parameters$[3]+" "+.@atcmd_parameters$[4]+" "+.@atcmd_parameters$[5]+" "+.@atcmd_parameters$[6]+" "+.@atcmd_parameters$[7]+" "+.@atcmd_parameters$[8]+" "+.@atcmd_parameters$[9]+" "+.@atcmd_parameters$[10]+" "+.@atcmd_parameters$[11]+" "+.@atcmd_parameters$[12];
-if(.@pa==12)
-.@name$ = .@atcmd_parameters$[0]+" "+.@atcmd_parameters$[1]+" "+.@atcmd_parameters$[2]+" "+.@atcmd_parameters$[3]+" "+.@atcmd_parameters$[4]+" "+.@atcmd_parameters$[5]+" "+.@atcmd_parameters$[6]+" "+.@atcmd_parameters$[7]+" "+.@atcmd_parameters$[8]+" "+.@atcmd_parameters$[9]+" "+.@atcmd_parameters$[10]+" "+.@atcmd_parameters$[11];
-if(.@pa==11)
-.@name$ = .@atcmd_parameters$[0]+" "+.@atcmd_parameters$[1]+" "+.@atcmd_parameters$[2]+" "+.@atcmd_parameters$[3]+" "+.@atcmd_parameters$[4]+" "+.@atcmd_parameters$[5]+" "+.@atcmd_parameters$[6]+" "+.@atcmd_parameters$[7]+" "+.@atcmd_parameters$[8]+" "+.@atcmd_parameters$[9]+" "+.@atcmd_parameters$[10];
-if(.@pa==10)
-.@name$ = .@atcmd_parameters$[0]+" "+.@atcmd_parameters$[1]+" "+.@atcmd_parameters$[2]+" "+.@atcmd_parameters$[3]+" "+.@atcmd_parameters$[4]+" "+.@atcmd_parameters$[5]+" "+.@atcmd_parameters$[6]+" "+.@atcmd_parameters$[7]+" "+.@atcmd_parameters$[8]+" "+.@atcmd_parameters$[9];
-if(.@pa==9)
-.@name$ = .@atcmd_parameters$[0]+" "+.@atcmd_parameters$[1]+" "+.@atcmd_parameters$[2]+" "+.@atcmd_parameters$[3]+" "+.@atcmd_parameters$[4]+" "+.@atcmd_parameters$[5]+" "+.@atcmd_parameters$[6]+" "+.@atcmd_parameters$[7]+" "+.@atcmd_parameters$[8];
-if(.@pa==8)
-.@name$ = .@atcmd_parameters$[0]+" "+.@atcmd_parameters$[1]+" "+.@atcmd_parameters$[2]+" "+.@atcmd_parameters$[3]+" "+.@atcmd_parameters$[4]+" "+.@atcmd_parameters$[5]+" "+.@atcmd_parameters$[6]+" "+.@atcmd_parameters$[7];
-if(.@pa==7)
-.@name$ = .@atcmd_parameters$[0]+" "+.@atcmd_parameters$[1]+" "+.@atcmd_parameters$[2]+" "+.@atcmd_parameters$[3]+" "+.@atcmd_parameters$[4]+" "+.@atcmd_parameters$[5]+" "+.@atcmd_parameters$[6];
-if(.@pa==6)
-.@name$ = .@atcmd_parameters$[0]+" "+.@atcmd_parameters$[1]+" "+.@atcmd_parameters$[2]+" "+.@atcmd_parameters$[3]+" "+.@atcmd_parameters$[4]+" "+.@atcmd_parameters$[5];
-if(.@pa==5)
-.@name$ = .@atcmd_parameters$[0]+" "+.@atcmd_parameters$[1]+" "+.@atcmd_parameters$[2]+" "+.@atcmd_parameters$[3]+" "+.@atcmd_parameters$[4];
-if(.@pa==4)
-.@name$ = .@atcmd_parameters$[0]+" "+.@atcmd_parameters$[1]+" "+.@atcmd_parameters$[2]+" "+.@atcmd_parameters$[3];
-if(.@pa==3)
-.@name$ = .@atcmd_parameters$[0]+" "+.@atcmd_parameters$[1]+" "+.@atcmd_parameters$[2];
-if(.@pa==2)
-.@name$ = .@atcmd_parameters$[0]+" "+.@atcmd_parameters$[1];
-if(.@pa==1)
-.@name$ = .@atcmd_parameters$[0];
+.@name$ = implode(.@atcmd_parameters$, " ");
 
 if(query_sql("SELECT `account_id` FROM `char` WHERE `name` = '"+.@name$+"'",.@acc_ID$)){
 if(.@acc_ID$=="")
