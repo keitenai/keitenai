@@ -1,21 +1,20 @@
 Index: conf/battle_athena.conf
 ===================================================================
---- conf/battle_athena.conf	(revision 271)
+--- conf/battle_athena.conf	(revision 26725)
 +++ conf/battle_athena.conf	(working copy)
-@@ -57,5 +57,8 @@
- // Includes duel, day/night, mute/manner, log settings.
- import: conf/battle/misc.conf
+@@ -59,3 +59,7 @@
  
+ //Your custom config goes here.
+ import: conf/import/battle_conf.txt
++
 +//Keitenai Delay Settings
 +import: conf/keitenai/keitenai_MoD.conf
 +
- //Your custom config goes here.
- import: conf/import/battle_conf.txt
 Index: conf/keitenai/keitenai_MoD.conf
 ===================================================================
 --- conf/keitenai/keitenai_MoD.conf	(nonexistent)
 +++ conf/keitenai/keitenai_MoD.conf	(working copy)
-@@ -0,0 +1,33 @@
+@@ -0,0 +1,31 @@
 +//------------------------------------------------------------------
 +// Keitenai Modification Files and Configuration
 +//------------------------------------------------------------------
@@ -24,7 +23,6 @@ Index: conf/keitenai/keitenai_MoD.conf
 +// 1 = ON
 +//------------------------------------------------------------------
 +KEITENAI_DELAY_SYSTEM: 1
-+
 +
 +//------------------------------------------------------------------
 +// Display delay in seconds.
@@ -45,15 +43,14 @@ Index: conf/keitenai/keitenai_MoD.conf
 +
 +
 +
-+
-+// Delay configuration file
++// configuration files
 +import: conf/keitenai/skill_delay.conf
 +import: conf/keitenai/skill_delay_castle.conf
 Index: conf/keitenai/skill_delay.conf
 ===================================================================
 --- conf/keitenai/skill_delay.conf	(nonexistent)
 +++ conf/keitenai/skill_delay.conf	(working copy)
-@@ -0,0 +1,738 @@
+@@ -0,0 +1,756 @@
 +//------------------------------------------------------------------
 +// Skill delay settings
 +// Value is in milliseconds (1000 = 1 second)
@@ -63,6 +60,9 @@ Index: conf/keitenai/skill_delay.conf
 +// been set in 'skill_cast_db' although this setting can increase
 +// the delay if value is higher than 'skill_cast_db' delay
 +//------------------------------------------------------------------
++
++// Default for non-listed skill
++K_DEFAULT: 200
 +
 +//=================
 +// Swordman
@@ -792,11 +792,26 @@ Index: conf/keitenai/skill_delay.conf
 +SU_TUNAPARTY: 200
 +SU_BUNCHOFSHRIMP: 200
 +SU_FRESHSHRIMP: 200
++SU_CN_METEOR2: 200
++SU_LUNATICCARROTBEAT2: 200
++SU_SOULATTACK: 200
++SU_POWEROFFLOCK: 200
++SU_SVG_SPIRIT: 200
++SU_HISS: 200
++SU_NYANGGRASS: 200
++SU_GROOMING: 200
++SU_PURRING: 200
++SU_SHRIMPARTY: 200
++SU_SPIRITOFLIFE: 200
++SU_MEOWMEOW: 200
++SU_SPIRITOFLAND: 200
++SU_CHATTERING: 200
++SU_SPIRITOFSEA: 200
 Index: conf/keitenai/skill_delay_castle.conf
 ===================================================================
 --- conf/keitenai/skill_delay_castle.conf	(nonexistent)
 +++ conf/keitenai/skill_delay_castle.conf	(working copy)
-@@ -0,0 +1,738 @@
+@@ -0,0 +1,756 @@
 +//------------------------------------------------------------------
 +// Skill delay settings
 +// Value is in milliseconds (1000 = 1 second)
@@ -806,6 +821,9 @@ Index: conf/keitenai/skill_delay_castle.conf
 +// been set in 'skill_cast_db' although this setting can increase
 +// the delay if value is higher than 'skill_cast_db' delay
 +//------------------------------------------------------------------
++
++// Default for non-listed skill
++WOE_K_DEFAULT: 200
 +
 +//=================
 +// Swordman
@@ -1535,11 +1553,26 @@ Index: conf/keitenai/skill_delay_castle.conf
 +WOE_SU_TUNAPARTY: 200
 +WOE_SU_BUNCHOFSHRIMP: 200
 +WOE_SU_FRESHSHRIMP: 200
++WOE_SU_CN_METEOR2: 200
++WOE_SU_LUNATICCARROTBEAT2: 200
++WOE_SU_SOULATTACK: 200
++WOE_SU_POWEROFFLOCK: 200
++WOE_SU_SVG_SPIRIT: 200
++WOE_SU_HISS: 200
++WOE_SU_NYANGGRASS: 200
++WOE_SU_GROOMING: 200
++WOE_SU_PURRING: 200
++WOE_SU_SHRIMPARTY: 200
++WOE_SU_SPIRITOFLIFE: 200
++WOE_SU_MEOWMEOW: 200
++WOE_SU_SPIRITOFLAND: 200
++WOE_SU_CHATTERING: 200
++WOE_SU_SPIRITOFSEA: 200
 Index: conf/keitenai/keitenai_MoD.conf
 ===================================================================
 --- conf/keitenai/keitenai_MoD.conf	(nonexistent)
 +++ conf/keitenai/keitenai_MoD.conf	(working copy)
-@@ -0,0 +1,33 @@
+@@ -0,0 +1,31 @@
 +//------------------------------------------------------------------
 +// Keitenai Modification Files and Configuration
 +//------------------------------------------------------------------
@@ -1548,7 +1581,6 @@ Index: conf/keitenai/keitenai_MoD.conf
 +// 1 = ON
 +//------------------------------------------------------------------
 +KEITENAI_DELAY_SYSTEM: 1
-+
 +
 +//------------------------------------------------------------------
 +// Display delay in seconds.
@@ -1569,15 +1601,14 @@ Index: conf/keitenai/keitenai_MoD.conf
 +
 +
 +
-+
-+// Delay configuration file
++// configuration files
 +import: conf/keitenai/skill_delay.conf
 +import: conf/keitenai/skill_delay_castle.conf
 Index: conf/keitenai/skill_delay.conf
 ===================================================================
 --- conf/keitenai/skill_delay.conf	(nonexistent)
 +++ conf/keitenai/skill_delay.conf	(working copy)
-@@ -0,0 +1,738 @@
+@@ -0,0 +1,756 @@
 +//------------------------------------------------------------------
 +// Skill delay settings
 +// Value is in milliseconds (1000 = 1 second)
@@ -1587,6 +1618,9 @@ Index: conf/keitenai/skill_delay.conf
 +// been set in 'skill_cast_db' although this setting can increase
 +// the delay if value is higher than 'skill_cast_db' delay
 +//------------------------------------------------------------------
++
++// Default for non-listed skill
++K_DEFAULT: 200
 +
 +//=================
 +// Swordman
@@ -2316,11 +2350,26 @@ Index: conf/keitenai/skill_delay.conf
 +SU_TUNAPARTY: 200
 +SU_BUNCHOFSHRIMP: 200
 +SU_FRESHSHRIMP: 200
++SU_CN_METEOR2: 200
++SU_LUNATICCARROTBEAT2: 200
++SU_SOULATTACK: 200
++SU_POWEROFFLOCK: 200
++SU_SVG_SPIRIT: 200
++SU_HISS: 200
++SU_NYANGGRASS: 200
++SU_GROOMING: 200
++SU_PURRING: 200
++SU_SHRIMPARTY: 200
++SU_SPIRITOFLIFE: 200
++SU_MEOWMEOW: 200
++SU_SPIRITOFLAND: 200
++SU_CHATTERING: 200
++SU_SPIRITOFSEA: 200
 Index: conf/keitenai/skill_delay_castle.conf
 ===================================================================
 --- conf/keitenai/skill_delay_castle.conf	(nonexistent)
 +++ conf/keitenai/skill_delay_castle.conf	(working copy)
-@@ -0,0 +1,738 @@
+@@ -0,0 +1,756 @@
 +//------------------------------------------------------------------
 +// Skill delay settings
 +// Value is in milliseconds (1000 = 1 second)
@@ -2330,6 +2379,9 @@ Index: conf/keitenai/skill_delay_castle.conf
 +// been set in 'skill_cast_db' although this setting can increase
 +// the delay if value is higher than 'skill_cast_db' delay
 +//------------------------------------------------------------------
++
++// Default for non-listed skill
++WOE_K_DEFAULT: 200
 +
 +//=================
 +// Swordman
@@ -3059,19 +3111,35 @@ Index: conf/keitenai/skill_delay_castle.conf
 +WOE_SU_TUNAPARTY: 200
 +WOE_SU_BUNCHOFSHRIMP: 200
 +WOE_SU_FRESHSHRIMP: 200
-Index: src/map/battle.c
++WOE_SU_CN_METEOR2: 200
++WOE_SU_LUNATICCARROTBEAT2: 200
++WOE_SU_SOULATTACK: 200
++WOE_SU_POWEROFFLOCK: 200
++WOE_SU_SVG_SPIRIT: 200
++WOE_SU_HISS: 200
++WOE_SU_NYANGGRASS: 200
++WOE_SU_GROOMING: 200
++WOE_SU_PURRING: 200
++WOE_SU_SHRIMPARTY: 200
++WOE_SU_SPIRITOFLIFE: 200
++WOE_SU_MEOWMEOW: 200
++WOE_SU_SPIRITOFLAND: 200
++WOE_SU_CHATTERING: 200
++WOE_SU_SPIRITOFSEA: 200
+Index: src/map/battle.cpp
 ===================================================================
---- src/map/battle.c	(revision 271)
-+++ src/map/battle.c	(working copy)
-@@ -8401,6 +8401,1016 @@
- 	{ "guild_maprespawn_clones",			&battle_config.guild_maprespawn_clones,			0,		0,		1,				},
- 	{ "hide_fav_sell", 			&battle_config.hide_fav_sell,			0,      0,      1,              },
+--- src/map/battle.cpp	(revision 26725)
++++ src/map/battle.cpp	(working copy)
+@@ -8445,6 +8445,1048 @@
+ 	{ "event_refine_chance",                &battle_config.event_refine_chance,             0,      0,      1,              },
+ 	{ "autoloot_adjust",                    &battle_config.autoloot_adjust,                 0,      0,      1,              },
  
 +
 +
 +/** Keitenai Spam Hack Protection Settings **/
 +	{ "KEITENAI_DELAY_SYSTEM",				&battle_config.KEITENAI_DELAY_SYSTEM,			1,		0,		1,				},
 +	{ "PACKET_FLOOD_SENSITIVITY",			&battle_config.MAX_PACKET_COUNTER,				1,		0,		INT_MAX,		},
++	{ "K_DEFAULT",							&battle_config.K_DELAY_DEFAULT,					150,	100,	300000,			},
 +	{ "SM_BASH",							&battle_config.K_DELAY_SM_BASH,					150,	100,	300000,			},
 +	{ "SM_MAGNUM",							&battle_config.K_DELAY_SM_MAGNUM,				150,	100,	300000,			},
 +	{ "MG_NAPALMBEAT",						&battle_config.K_DELAY_MG_NAPALMBEAT,			150,	100,	300000,			},
@@ -3572,9 +3640,25 @@ Index: src/map/battle.c
 +	{ "SU_TUNAPARTY",						&battle_config.K_DELAY_SU_TUNAPARTY,			150,	100,	300000,			},
 +	{ "SU_BUNCHOFSHRIMP",					&battle_config.K_DELAY_SU_BUNCHOFSHRIMP,		150,	100,	300000,			},
 +	{ "SU_FRESHSHRIMP",						&battle_config.K_DELAY_SU_FRESHSHRIMP,			150,	100,	300000,			},
++	{ "SU_CN_METEOR2",						&battle_config.K_DELAY_SU_CN_METEOR2,			150,	100,	300000,			},
++	{ "SU_LUNATICCARROTBEAT2",				&battle_config.K_DELAY_SU_LUNATICCARROTBEAT2,	150,	100,	300000,			},
++	{ "SU_SOULATTACK",						&battle_config.K_DELAY_SU_SOULATTACK,			150,	100,	300000,			},
++	{ "SU_POWEROFFLOCK",					&battle_config.K_DELAY_SU_POWEROFFLOCK,			150,	100,	300000,			},
++	{ "SU_SVG_SPIRIT",						&battle_config.K_DELAY_SU_SVG_SPIRIT,			150,	100,	300000,			},
++	{ "SU_HISS",							&battle_config.K_DELAY_SU_HISS,					150,	100,	300000,			},
++	{ "SU_NYANGGRASS",						&battle_config.K_DELAY_SU_NYANGGRASS,			150,	100,	300000,			},
++	{ "SU_GROOMING",						&battle_config.K_DELAY_SU_GROOMING,				150,	100,	300000,			},
++	{ "SU_PURRING",							&battle_config.K_DELAY_SU_PURRING,				150,	100,	300000,			},
++	{ "SU_SHRIMPARTY",						&battle_config.K_DELAY_SU_SHRIMPARTY,			150,	100,	300000,			},
++	{ "SU_SPIRITOFLIFE",					&battle_config.K_DELAY_SU_SPIRITOFLIFE,			150,	100,	300000,			},
++	{ "SU_MEOWMEOW",						&battle_config.K_DELAY_SU_MEOWMEOW,				150,	100,	300000,			},
++	{ "SU_SPIRITOFLAND",					&battle_config.K_DELAY_SU_SPIRITOFLAND,			150,	100,	300000,			},
++	{ "SU_CHATTERING",						&battle_config.K_DELAY_SU_CHATTERING,			150,	100,	300000,			},
++	{ "SU_SPIRITOFSEA",						&battle_config.K_DELAY_SU_SPIRITOFSEA,			150,	100,	300000,			},
 +
 +/** Keitenai WoE skill delay Spam Hack Protection **/
 +	{ "SHOW_SKILL_DELAY",					&battle_config.KEITENAI_SHOW_DELAY,				1,		0,		1,				},
++	{ "WOE_K_DEFAULT",						&battle_config.WOE_K_DELAY_DEFAULT,				150,	100,	300000,			},
 +	{ "WOE_SM_BASH",						&battle_config.WOE_K_DELAY_SM_BASH,				150,	100,	300000,			},
 +	{ "WOE_SM_MAGNUM",						&battle_config.WOE_K_DELAY_SM_MAGNUM,			150,	100,	300000,			},
 +	{ "WOE_MG_NAPALMBEAT",					&battle_config.WOE_K_DELAY_MG_NAPALMBEAT,		150,	100,	300000,			},
@@ -4075,22 +4159,38 @@ Index: src/map/battle.c
 +	{ "WOE_SU_TUNAPARTY",					&battle_config.WOE_K_DELAY_SU_TUNAPARTY,		150,	100,	300000,			},
 +	{ "WOE_SU_BUNCHOFSHRIMP",				&battle_config.WOE_K_DELAY_SU_BUNCHOFSHRIMP,	150,	100,	300000,			},
 +	{ "WOE_SU_FRESHSHRIMP",					&battle_config.WOE_K_DELAY_SU_FRESHSHRIMP,		150,	100,	300000,			},
++	{ "WOE_SU_CN_METEOR2",					&battle_config.WOE_K_DELAY_SU_CN_METEOR2,		150,	100,	300000,			},
++	{ "WOE_SU_LUNATICCARROTBEAT2",			&battle_config.WOE_K_DELAY_SU_LUNATICCARROTBEAT2,150,	100,	300000,			},
++	{ "WOE_SU_SOULATTACK",					&battle_config.WOE_K_DELAY_SU_SOULATTACK,		150,	100,	300000,			},
++	{ "WOE_SU_POWEROFFLOCK",				&battle_config.WOE_K_DELAY_SU_POWEROFFLOCK,		150,	100,	300000,			},
++	{ "WOE_SU_SVG_SPIRIT",					&battle_config.WOE_K_DELAY_SU_SVG_SPIRIT,		150,	100,	300000,			},
++	{ "WOE_SU_HISS",						&battle_config.WOE_K_DELAY_SU_HISS,				150,	100,	300000,			},
++	{ "WOE_SU_NYANGGRASS",					&battle_config.WOE_K_DELAY_SU_NYANGGRASS,		150,	100,	300000,			},
++	{ "WOE_SU_GROOMING",					&battle_config.WOE_K_DELAY_SU_GROOMING,			150,	100,	300000,			},
++	{ "WOE_SU_PURRING",						&battle_config.WOE_K_DELAY_SU_PURRING,			150,	100,	300000,			},
++	{ "WOE_SU_SHRIMPARTY",					&battle_config.WOE_K_DELAY_SU_SHRIMPARTY,		150,	100,	300000,			},
++	{ "WOE_SU_SPIRITOFLIFE",				&battle_config.WOE_K_DELAY_SU_SPIRITOFLIFE,		150,	100,	300000,			},
++	{ "WOE_SU_MEOWMEOW",					&battle_config.WOE_K_DELAY_SU_MEOWMEOW,			150,	100,	300000,			},
++	{ "WOE_SU_SPIRITOFLAND",				&battle_config.WOE_K_DELAY_SU_SPIRITOFLAND,		150,	100,	300000,			},
++	{ "WOE_SU_CHATTERING",					&battle_config.WOE_K_DELAY_SU_CHATTERING,		150,	100,	300000,			},
++	{ "WOE_SU_SPIRITOFSEA",					&battle_config.WOE_K_DELAY_SU_SPIRITOFSEA,		150,	100,	300000,			},
 +
 +
  #include "../custom/battle_config_init.inc"
  };
  
-Index: src/map/battle.h
+Index: src/map/battle.hpp
 ===================================================================
---- src/map/battle.h	(revision 271)
-+++ src/map/battle.h	(working copy)
-@@ -549,6 +549,1017 @@
+--- src/map/battle.hpp	(revision 26725)
++++ src/map/battle.hpp	(working copy)
+@@ -556,6 +556,1048 @@
  	int update_enemy_position;
  	int devotion_rdamage;
  
 +	// Keitenai Delay
 +	int KEITENAI_DELAY_SYSTEM;
 +	int MAX_PACKET_COUNTER;
++	int K_DELAY_DEFAULT;
 +	int K_DELAY_SM_BASH;
 +	int K_DELAY_SM_MAGNUM;
 +	int K_DELAY_MG_NAPALMBEAT;
@@ -4593,10 +4693,25 @@ Index: src/map/battle.h
 +	int K_DELAY_SU_TUNAPARTY;
 +	int K_DELAY_SU_BUNCHOFSHRIMP;
 +	int K_DELAY_SU_FRESHSHRIMP;
++	int K_DELAY_SU_CN_METEOR2;
++	int K_DELAY_SU_LUNATICCARROTBEAT2;
++	int K_DELAY_SU_SOULATTACK;
++	int K_DELAY_SU_POWEROFFLOCK;
++	int K_DELAY_SU_SVG_SPIRIT;
++	int K_DELAY_SU_HISS;
++	int K_DELAY_SU_NYANGGRASS;
++	int K_DELAY_SU_GROOMING;
++	int K_DELAY_SU_PURRING;
++	int K_DELAY_SU_SHRIMPARTY;
++	int K_DELAY_SU_SPIRITOFLIFE;
++	int K_DELAY_SU_MEOWMEOW;
++	int K_DELAY_SU_SPIRITOFLAND;
++	int K_DELAY_SU_CHATTERING;
++	int K_DELAY_SU_SPIRITOFSEA;
 +
 +	// WoE Keitenai skill delay
 +	int KEITENAI_SHOW_DELAY;
-+
++	int WOE_K_DELAY_DEFAULT;
 +	int WOE_K_DELAY_SM_BASH;
 +	int WOE_K_DELAY_SM_MAGNUM;
 +	int WOE_K_DELAY_MG_NAPALMBEAT;
@@ -5098,20 +5213,36 @@ Index: src/map/battle.h
 +	int WOE_K_DELAY_SU_TUNAPARTY;
 +	int WOE_K_DELAY_SU_BUNCHOFSHRIMP;
 +	int WOE_K_DELAY_SU_FRESHSHRIMP;
++	int WOE_K_DELAY_SU_CN_METEOR2;
++	int WOE_K_DELAY_SU_LUNATICCARROTBEAT2;
++	int WOE_K_DELAY_SU_SOULATTACK;
++	int WOE_K_DELAY_SU_POWEROFFLOCK;
++	int WOE_K_DELAY_SU_SVG_SPIRIT;
++	int WOE_K_DELAY_SU_HISS;
++	int WOE_K_DELAY_SU_NYANGGRASS;
++	int WOE_K_DELAY_SU_GROOMING;
++	int WOE_K_DELAY_SU_PURRING;
++	int WOE_K_DELAY_SU_SHRIMPARTY;
++	int WOE_K_DELAY_SU_SPIRITOFLIFE;
++	int WOE_K_DELAY_SU_MEOWMEOW;
++	int WOE_K_DELAY_SU_SPIRITOFLAND;
++	int WOE_K_DELAY_SU_CHATTERING;
++	int WOE_K_DELAY_SU_SPIRITOFSEA;
 +
  	// autotrade persistency
  	int feature_autotrade;
  	int feature_autotrade_direction;
-Index: src/map/pc.h
+Index: src/map/pc.hpp
 ===================================================================
---- src/map/pc.h	(revision 271)
-+++ src/map/pc.h	(working copy)
-@@ -342,6 +342,1014 @@
+--- src/map/pc.hpp	(revision 26725)
++++ src/map/pc.hpp	(working copy)
+@@ -347,6 +347,1048 @@
  	unsigned int cansendmail_tick; // [Mail System Flood Protection]
  	unsigned int ks_floodprotect_tick; // [Kill Steal Protection]
  
 +/** Keitenai Spam Hack Protection **/
 +//=========================================================================================
++		unsigned int K_CHK_DEFAULT;
 +		unsigned int K_CHK_MO_RELOCDELAY;
 +		unsigned int K_CHK_SM_BASH;
 +		unsigned int K_CHK_SM_MAGNUM;
@@ -5614,7 +5745,23 @@ Index: src/map/pc.h
 +		unsigned int K_CHK_SU_TUNAPARTY;
 +		unsigned int K_CHK_SU_BUNCHOFSHRIMP;
 +		unsigned int K_CHK_SU_FRESHSHRIMP;
++		unsigned int K_CHK_SU_CN_METEOR2;
++		unsigned int K_CHK_SU_LUNATICCARROTBEAT2;
++		unsigned int K_CHK_SU_SOULATTACK;
++		unsigned int K_CHK_SU_POWEROFFLOCK;
++		unsigned int K_CHK_SU_SVG_SPIRIT;
++		unsigned int K_CHK_SU_HISS;
++		unsigned int K_CHK_SU_NYANGGRASS;
++		unsigned int K_CHK_SU_GROOMING;
++		unsigned int K_CHK_SU_PURRING;
++		unsigned int K_CHK_SU_SHRIMPARTY;
++		unsigned int K_CHK_SU_SPIRITOFLIFE;
++		unsigned int K_CHK_SU_MEOWMEOW;
++		unsigned int K_CHK_SU_SPIRITOFLAND;
++		unsigned int K_CHK_SU_CHATTERING;
++		unsigned int K_CHK_SU_SPIRITOFSEA;
 +
++		unsigned int K_LOCK_DEFAULT;
 +		unsigned int K_LOCK_MO_RELOCDELAY;
 +		unsigned int K_LOCK_SM_BASH;
 +		unsigned int K_LOCK_SM_MAGNUM;
@@ -6117,15 +6264,32 @@ Index: src/map/pc.h
 +		unsigned int K_LOCK_SU_TUNAPARTY;
 +		unsigned int K_LOCK_SU_BUNCHOFSHRIMP;
 +		unsigned int K_LOCK_SU_FRESHSHRIMP;
++		unsigned int K_LOCK_SU_CN_METEOR2;
++		unsigned int K_LOCK_SU_LUNATICCARROTBEAT2;
++		unsigned int K_LOCK_SU_SOULATTACK;
++		unsigned int K_LOCK_SU_POWEROFFLOCK;
++		unsigned int K_LOCK_SU_SVG_SPIRIT;
++		unsigned int K_LOCK_SU_HISS;
++		unsigned int K_LOCK_SU_NYANGGRASS;
++		unsigned int K_LOCK_SU_GROOMING;
++		unsigned int K_LOCK_SU_PURRING;
++		unsigned int K_LOCK_SU_SHRIMPARTY;
++		unsigned int K_LOCK_SU_SPIRITOFLIFE;
++		unsigned int K_LOCK_SU_MEOWMEOW;
++		unsigned int K_LOCK_SU_SPIRITOFLAND;
++		unsigned int K_LOCK_SU_CHATTERING;
++		unsigned int K_LOCK_SU_SPIRITOFSEA;
++		
++		
 +//=========================================================================================
  	struct s_item_delay {
  		unsigned short nameid;
  		unsigned int tick;
-Index: src/map/skill.c
+Index: src/map/skill.cpp
 ===================================================================
---- src/map/skill.c	(revision 271)
-+++ src/map/skill.c	(working copy)
-@@ -14860,6 +14860,511 @@
+--- src/map/skill.cpp	(revision 26725)
++++ src/map/skill.cpp	(working copy)
+@@ -14951,6 +14951,531 @@
  		    return false;
  	    }
  	}
@@ -6632,12 +6796,32 @@ Index: src/map/skill.c
 +		case SU_TUNAPARTY:						if(sd && sd->K_LOCK_SU_TUNAPARTY)			return false;	break;
 +		case SU_BUNCHOFSHRIMP:					if(sd && sd->K_LOCK_SU_BUNCHOFSHRIMP)		return false;	break;
 +		case SU_FRESHSHRIMP:					if(sd && sd->K_LOCK_SU_FRESHSHRIMP)			return false;	break;
++		case SU_CN_METEOR2:						if(sd && sd->K_LOCK_SU_CN_METEOR2)			return false;	break;
++		case SU_LUNATICCARROTBEAT2:				if(sd && sd->K_LOCK_SU_LUNATICCARROTBEAT2)	return false;	break;
++		case SU_SOULATTACK:						if(sd && sd->K_LOCK_SU_SOULATTACK)			return false;	break;
++		case SU_POWEROFFLOCK:					if(sd && sd->K_LOCK_SU_POWEROFFLOCK)		return false;	break;
++		case SU_SVG_SPIRIT:						if(sd && sd->K_LOCK_SU_SVG_SPIRIT)			return false;	break;
++		case SU_HISS:							if(sd && sd->K_LOCK_SU_HISS)				return false;	break;
++		case SU_NYANGGRASS:						if(sd && sd->K_LOCK_SU_NYANGGRASS)			return false;	break;
++		case SU_GROOMING:						if(sd && sd->K_LOCK_SU_GROOMING)			return false;	break;
++		case SU_PURRING:						if(sd && sd->K_LOCK_SU_PURRING)				return false;	break;
++		case SU_SHRIMPARTY:						if(sd && sd->K_LOCK_SU_SHRIMPARTY)			return false;	break;
++		case SU_SPIRITOFLIFE:					if(sd && sd->K_LOCK_SU_SPIRITOFLIFE)		return false;	break;
++		case SU_MEOWMEOW:						if(sd && sd->K_LOCK_SU_MEOWMEOW)			return false;	break;
++		case SU_SPIRITOFLAND:					if(sd && sd->K_LOCK_SU_SPIRITOFLAND)		return false;	break;
++		case SU_CHATTERING:						if(sd && sd->K_LOCK_SU_CHATTERING)			return false;	break;
++		case SU_SPIRITOFSEA:					if(sd && sd->K_LOCK_SU_SPIRITOFSEA)			return false;	break;
++
++		default:
++			if(sd && sd->K_LOCK_DEFAULT)
++				return false;
++			break;
 +	}
 +
  	// perform skill-specific checks (and actions)
  	switch( skill_id ) {
  		case RG_GRAFFITI:
-@@ -16219,6 +16724,10 @@
+@@ -16352,6 +16877,10 @@
  
  	nullpo_ret(bl);
  
@@ -6648,7 +6832,7 @@ Index: src/map/skill.c
  #ifndef RENEWAL_CAST
  	{
  		struct map_session_data *sd = BL_CAST(BL_PC, bl);
-@@ -16540,6 +17049,12 @@
+@@ -16673,6 +17202,12 @@
  
  	//ShowInfo("Delay delayfix = %d\n",time);
  
@@ -6661,7 +6845,7 @@ Index: src/map/skill.c
  	return max(time,0);
  }
  
-@@ -16873,6 +17388,11526 @@
+@@ -17008,6 +17543,11897 @@
  	return 0;
  }
  
@@ -18181,6 +18365,377 @@ Index: src/map/skill.c
 +				sd->K_LOCK_SU_FRESHSHRIMP = 0;
 +			}
 +			break;
++		case SU_CN_METEOR2:
++			if(DIFF_TICK(sd->K_CHK_SU_CN_METEOR2,gettick())> 0){
++				if(show_delay){
++					sprintf(message_skdelay,"[ %i ] second(s) skill use delay",(sd->K_CHK_SU_CN_METEOR2 - gettick())/k);
++					clif_messagecolor(&sd->bl,color_table[COLOR_LIGHT_GREEN],message_skdelay,false,SELF);
++				}
++				if((map[m].flag.gvg_castle || map[m].flag.gvg_te_castle) && (sd->K_LOCK_SU_CN_METEOR2 >= (battle_config.WOE_K_DELAY_SU_CN_METEOR2/Acceptable_Packet)))
++					clif_authfail_fd(sd->fd, 9); // Disconnect Player
++				else if(sd->K_LOCK_SU_CN_METEOR2 >= (battle_config.K_DELAY_SU_CN_METEOR2/Acceptable_Packet))
++					clif_authfail_fd(sd->fd, 9); // Disconnect Player
++
++				sd->K_LOCK_SU_CN_METEOR2 = sd->K_LOCK_SU_CN_METEOR2 +1;
++			}
++			else
++			{
++				if(map[m].flag.gvg_castle || map[m].flag.gvg_te_castle)
++					sd->K_CHK_SU_CN_METEOR2 = gettick() + battle_config.WOE_K_DELAY_SU_CN_METEOR2;
++				else
++					sd->K_CHK_SU_CN_METEOR2 = gettick() + battle_config.K_DELAY_SU_CN_METEOR2;
++
++				sd->K_LOCK_SU_CN_METEOR2 = 0;
++			}
++			break;
++		case SU_LUNATICCARROTBEAT2:
++			if(DIFF_TICK(sd->K_CHK_SU_LUNATICCARROTBEAT2,gettick())> 0){
++				if(show_delay){
++					sprintf(message_skdelay,"[ %i ] second(s) skill use delay",(sd->K_CHK_SU_LUNATICCARROTBEAT2 - gettick())/k);
++					clif_messagecolor(&sd->bl,color_table[COLOR_LIGHT_GREEN],message_skdelay,false,SELF);
++				}
++				if((map[m].flag.gvg_castle || map[m].flag.gvg_te_castle) && (sd->K_LOCK_SU_LUNATICCARROTBEAT2 >= (battle_config.WOE_K_DELAY_SU_LUNATICCARROTBEAT2/Acceptable_Packet)))
++					clif_authfail_fd(sd->fd, 9); // Disconnect Player
++				else if(sd->K_LOCK_SU_LUNATICCARROTBEAT2 >= (battle_config.K_DELAY_SU_LUNATICCARROTBEAT2/Acceptable_Packet))
++					clif_authfail_fd(sd->fd, 9); // Disconnect Player
++
++				sd->K_LOCK_SU_LUNATICCARROTBEAT2 = sd->K_LOCK_SU_LUNATICCARROTBEAT2 +1;
++			}
++			else
++			{
++				if(map[m].flag.gvg_castle || map[m].flag.gvg_te_castle)
++					sd->K_CHK_SU_LUNATICCARROTBEAT2 = gettick() + battle_config.WOE_K_DELAY_SU_LUNATICCARROTBEAT2;
++				else
++					sd->K_CHK_SU_LUNATICCARROTBEAT2 = gettick() + battle_config.K_DELAY_SU_LUNATICCARROTBEAT2;
++
++				sd->K_LOCK_SU_LUNATICCARROTBEAT2 = 0;
++			}
++			break;
++		case SU_SOULATTACK:
++			if(DIFF_TICK(sd->K_CHK_SU_SOULATTACK,gettick())> 0){
++				if(show_delay){
++					sprintf(message_skdelay,"[ %i ] second(s) skill use delay",(sd->K_CHK_SU_SOULATTACK - gettick())/k);
++					clif_messagecolor(&sd->bl,color_table[COLOR_LIGHT_GREEN],message_skdelay,false,SELF);
++				}
++				if((map[m].flag.gvg_castle || map[m].flag.gvg_te_castle) && (sd->K_LOCK_SU_SOULATTACK >= (battle_config.WOE_K_DELAY_SU_SOULATTACK/Acceptable_Packet)))
++					clif_authfail_fd(sd->fd, 9); // Disconnect Player
++				else if(sd->K_LOCK_SU_SOULATTACK >= (battle_config.K_DELAY_SU_SOULATTACK/Acceptable_Packet))
++					clif_authfail_fd(sd->fd, 9); // Disconnect Player
++
++				sd->K_LOCK_SU_SOULATTACK = sd->K_LOCK_SU_SOULATTACK +1;
++			}
++			else
++			{
++				if(map[m].flag.gvg_castle || map[m].flag.gvg_te_castle)
++					sd->K_CHK_SU_SOULATTACK = gettick() + battle_config.WOE_K_DELAY_SU_SOULATTACK;
++				else
++					sd->K_CHK_SU_SOULATTACK = gettick() + battle_config.K_DELAY_SU_SOULATTACK;
++
++				sd->K_LOCK_SU_SOULATTACK = 0;
++			}
++			break;
++		case SU_POWEROFFLOCK:
++			if(DIFF_TICK(sd->K_CHK_SU_POWEROFFLOCK,gettick())> 0){
++				if(show_delay){
++					sprintf(message_skdelay,"[ %i ] second(s) skill use delay",(sd->K_CHK_SU_POWEROFFLOCK - gettick())/k);
++					clif_messagecolor(&sd->bl,color_table[COLOR_LIGHT_GREEN],message_skdelay,false,SELF);
++				}
++				if((map[m].flag.gvg_castle || map[m].flag.gvg_te_castle) && (sd->K_LOCK_SU_POWEROFFLOCK >= (battle_config.WOE_K_DELAY_SU_POWEROFFLOCK/Acceptable_Packet)))
++					clif_authfail_fd(sd->fd, 9); // Disconnect Player
++				else if(sd->K_LOCK_SU_POWEROFFLOCK >= (battle_config.K_DELAY_SU_POWEROFFLOCK/Acceptable_Packet))
++					clif_authfail_fd(sd->fd, 9); // Disconnect Player
++
++				sd->K_LOCK_SU_POWEROFFLOCK = sd->K_LOCK_SU_POWEROFFLOCK +1;
++			}
++			else
++			{
++				if(map[m].flag.gvg_castle || map[m].flag.gvg_te_castle)
++					sd->K_CHK_SU_POWEROFFLOCK = gettick() + battle_config.WOE_K_DELAY_SU_POWEROFFLOCK;
++				else
++					sd->K_CHK_SU_POWEROFFLOCK = gettick() + battle_config.K_DELAY_SU_POWEROFFLOCK;
++
++				sd->K_LOCK_SU_POWEROFFLOCK = 0;
++			}
++			break;
++		case SU_SVG_SPIRIT:
++			if(DIFF_TICK(sd->K_CHK_SU_SVG_SPIRIT,gettick())> 0){
++				if(show_delay){
++					sprintf(message_skdelay,"[ %i ] second(s) skill use delay",(sd->K_CHK_SU_SVG_SPIRIT - gettick())/k);
++					clif_messagecolor(&sd->bl,color_table[COLOR_LIGHT_GREEN],message_skdelay,false,SELF);
++				}
++				if((map[m].flag.gvg_castle || map[m].flag.gvg_te_castle) && (sd->K_LOCK_SU_SVG_SPIRIT >= (battle_config.WOE_K_DELAY_SU_SVG_SPIRIT/Acceptable_Packet)))
++					clif_authfail_fd(sd->fd, 9); // Disconnect Player
++				else if(sd->K_LOCK_SU_SVG_SPIRIT >= (battle_config.K_DELAY_SU_SVG_SPIRIT/Acceptable_Packet))
++					clif_authfail_fd(sd->fd, 9); // Disconnect Player
++
++				sd->K_LOCK_SU_SVG_SPIRIT = sd->K_LOCK_SU_SVG_SPIRIT +1;
++			}
++			else
++			{
++				if(map[m].flag.gvg_castle || map[m].flag.gvg_te_castle)
++					sd->K_CHK_SU_SVG_SPIRIT = gettick() + battle_config.WOE_K_DELAY_SU_SVG_SPIRIT;
++				else
++					sd->K_CHK_SU_SVG_SPIRIT = gettick() + battle_config.K_DELAY_SU_SVG_SPIRIT;
++
++				sd->K_LOCK_SU_SVG_SPIRIT = 0;
++			}
++			break;
++		case SU_HISS:
++			if(DIFF_TICK(sd->K_CHK_SU_HISS,gettick())> 0){
++				if(show_delay){
++					sprintf(message_skdelay,"[ %i ] second(s) skill use delay",(sd->K_CHK_SU_HISS - gettick())/k);
++					clif_messagecolor(&sd->bl,color_table[COLOR_LIGHT_GREEN],message_skdelay,false,SELF);
++				}
++				if((map[m].flag.gvg_castle || map[m].flag.gvg_te_castle) && (sd->K_LOCK_SU_HISS >= (battle_config.WOE_K_DELAY_SU_HISS/Acceptable_Packet)))
++					clif_authfail_fd(sd->fd, 9); // Disconnect Player
++				else if(sd->K_LOCK_SU_HISS >= (battle_config.K_DELAY_SU_HISS/Acceptable_Packet))
++					clif_authfail_fd(sd->fd, 9); // Disconnect Player
++
++				sd->K_LOCK_SU_HISS = sd->K_LOCK_SU_HISS +1;
++			}
++			else
++			{
++				if(map[m].flag.gvg_castle || map[m].flag.gvg_te_castle)
++					sd->K_CHK_SU_HISS = gettick() + battle_config.WOE_K_DELAY_SU_HISS;
++				else
++					sd->K_CHK_SU_HISS = gettick() + battle_config.K_DELAY_SU_HISS;
++
++				sd->K_LOCK_SU_HISS = 0;
++			}
++			break;
++		case SU_NYANGGRASS:
++			if(DIFF_TICK(sd->K_CHK_SU_NYANGGRASS,gettick())> 0){
++				if(show_delay){
++					sprintf(message_skdelay,"[ %i ] second(s) skill use delay",(sd->K_CHK_SU_NYANGGRASS - gettick())/k);
++					clif_messagecolor(&sd->bl,color_table[COLOR_LIGHT_GREEN],message_skdelay,false,SELF);
++				}
++				if((map[m].flag.gvg_castle || map[m].flag.gvg_te_castle) && (sd->K_LOCK_SU_NYANGGRASS >= (battle_config.WOE_K_DELAY_SU_NYANGGRASS/Acceptable_Packet)))
++					clif_authfail_fd(sd->fd, 9); // Disconnect Player
++				else if(sd->K_LOCK_SU_NYANGGRASS >= (battle_config.K_DELAY_SU_NYANGGRASS/Acceptable_Packet))
++					clif_authfail_fd(sd->fd, 9); // Disconnect Player
++
++				sd->K_LOCK_SU_NYANGGRASS = sd->K_LOCK_SU_NYANGGRASS +1;
++			}
++			else
++			{
++				if(map[m].flag.gvg_castle || map[m].flag.gvg_te_castle)
++					sd->K_CHK_SU_NYANGGRASS = gettick() + battle_config.WOE_K_DELAY_SU_NYANGGRASS;
++				else
++					sd->K_CHK_SU_NYANGGRASS = gettick() + battle_config.K_DELAY_SU_NYANGGRASS;
++
++				sd->K_LOCK_SU_NYANGGRASS = 0;
++			}
++			break;
++		case SU_GROOMING:
++			if(DIFF_TICK(sd->K_CHK_SU_GROOMING,gettick())> 0){
++				if(show_delay){
++					sprintf(message_skdelay,"[ %i ] second(s) skill use delay",(sd->K_CHK_SU_GROOMING - gettick())/k);
++					clif_messagecolor(&sd->bl,color_table[COLOR_LIGHT_GREEN],message_skdelay,false,SELF);
++				}
++				if((map[m].flag.gvg_castle || map[m].flag.gvg_te_castle) && (sd->K_LOCK_SU_GROOMING >= (battle_config.WOE_K_DELAY_SU_GROOMING/Acceptable_Packet)))
++					clif_authfail_fd(sd->fd, 9); // Disconnect Player
++				else if(sd->K_LOCK_SU_GROOMING >= (battle_config.K_DELAY_SU_GROOMING/Acceptable_Packet))
++					clif_authfail_fd(sd->fd, 9); // Disconnect Player
++
++				sd->K_LOCK_SU_GROOMING = sd->K_LOCK_SU_GROOMING +1;
++			}
++			else
++			{
++				if(map[m].flag.gvg_castle || map[m].flag.gvg_te_castle)
++					sd->K_CHK_SU_GROOMING = gettick() + battle_config.WOE_K_DELAY_SU_GROOMING;
++				else
++					sd->K_CHK_SU_GROOMING = gettick() + battle_config.K_DELAY_SU_GROOMING;
++
++				sd->K_LOCK_SU_GROOMING = 0;
++			}
++			break;
++		case SU_PURRING:
++			if(DIFF_TICK(sd->K_CHK_SU_PURRING,gettick())> 0){
++				if(show_delay){
++					sprintf(message_skdelay,"[ %i ] second(s) skill use delay",(sd->K_CHK_SU_PURRING - gettick())/k);
++					clif_messagecolor(&sd->bl,color_table[COLOR_LIGHT_GREEN],message_skdelay,false,SELF);
++				}
++				if((map[m].flag.gvg_castle || map[m].flag.gvg_te_castle) && (sd->K_LOCK_SU_PURRING >= (battle_config.WOE_K_DELAY_SU_PURRING/Acceptable_Packet)))
++					clif_authfail_fd(sd->fd, 9); // Disconnect Player
++				else if(sd->K_LOCK_SU_PURRING >= (battle_config.K_DELAY_SU_PURRING/Acceptable_Packet))
++					clif_authfail_fd(sd->fd, 9); // Disconnect Player
++
++				sd->K_LOCK_SU_PURRING = sd->K_LOCK_SU_PURRING +1;
++			}
++			else
++			{
++				if(map[m].flag.gvg_castle || map[m].flag.gvg_te_castle)
++					sd->K_CHK_SU_PURRING = gettick() + battle_config.WOE_K_DELAY_SU_PURRING;
++				else
++					sd->K_CHK_SU_PURRING = gettick() + battle_config.K_DELAY_SU_PURRING;
++
++				sd->K_LOCK_SU_PURRING = 0;
++			}
++			break;
++		case SU_SHRIMPARTY:
++			if(DIFF_TICK(sd->K_CHK_SU_SHRIMPARTY,gettick())> 0){
++				if(show_delay){
++					sprintf(message_skdelay,"[ %i ] second(s) skill use delay",(sd->K_CHK_SU_SHRIMPARTY - gettick())/k);
++					clif_messagecolor(&sd->bl,color_table[COLOR_LIGHT_GREEN],message_skdelay,false,SELF);
++				}
++				if((map[m].flag.gvg_castle || map[m].flag.gvg_te_castle) && (sd->K_LOCK_SU_SHRIMPARTY >= (battle_config.WOE_K_DELAY_SU_SHRIMPARTY/Acceptable_Packet)))
++					clif_authfail_fd(sd->fd, 9); // Disconnect Player
++				else if(sd->K_LOCK_SU_SHRIMPARTY >= (battle_config.K_DELAY_SU_SHRIMPARTY/Acceptable_Packet))
++					clif_authfail_fd(sd->fd, 9); // Disconnect Player
++
++				sd->K_LOCK_SU_SHRIMPARTY = sd->K_LOCK_SU_SHRIMPARTY +1;
++			}
++			else
++			{
++				if(map[m].flag.gvg_castle || map[m].flag.gvg_te_castle)
++					sd->K_CHK_SU_SHRIMPARTY = gettick() + battle_config.WOE_K_DELAY_SU_SHRIMPARTY;
++				else
++					sd->K_CHK_SU_SHRIMPARTY = gettick() + battle_config.K_DELAY_SU_SHRIMPARTY;
++
++				sd->K_LOCK_SU_SHRIMPARTY = 0;
++			}
++			break;
++		case SU_SPIRITOFLIFE:
++			if(DIFF_TICK(sd->K_CHK_SU_SPIRITOFLIFE,gettick())> 0){
++				if(show_delay){
++					sprintf(message_skdelay,"[ %i ] second(s) skill use delay",(sd->K_CHK_SU_SPIRITOFLIFE - gettick())/k);
++					clif_messagecolor(&sd->bl,color_table[COLOR_LIGHT_GREEN],message_skdelay,false,SELF);
++				}
++				if((map[m].flag.gvg_castle || map[m].flag.gvg_te_castle) && (sd->K_LOCK_SU_SPIRITOFLIFE >= (battle_config.WOE_K_DELAY_SU_SPIRITOFLIFE/Acceptable_Packet)))
++					clif_authfail_fd(sd->fd, 9); // Disconnect Player
++				else if(sd->K_LOCK_SU_SPIRITOFLIFE >= (battle_config.K_DELAY_SU_SPIRITOFLIFE/Acceptable_Packet))
++					clif_authfail_fd(sd->fd, 9); // Disconnect Player
++
++				sd->K_LOCK_SU_SPIRITOFLIFE = sd->K_LOCK_SU_SPIRITOFLIFE +1;
++			}
++			else
++			{
++				if(map[m].flag.gvg_castle || map[m].flag.gvg_te_castle)
++					sd->K_CHK_SU_SPIRITOFLIFE = gettick() + battle_config.WOE_K_DELAY_SU_SPIRITOFLIFE;
++				else
++					sd->K_CHK_SU_SPIRITOFLIFE = gettick() + battle_config.K_DELAY_SU_SPIRITOFLIFE;
++
++				sd->K_LOCK_SU_SPIRITOFLIFE = 0;
++			}
++			break;
++		case SU_MEOWMEOW:
++			if(DIFF_TICK(sd->K_CHK_SU_MEOWMEOW,gettick())> 0){
++				if(show_delay){
++					sprintf(message_skdelay,"[ %i ] second(s) skill use delay",(sd->K_CHK_SU_MEOWMEOW - gettick())/k);
++					clif_messagecolor(&sd->bl,color_table[COLOR_LIGHT_GREEN],message_skdelay,false,SELF);
++				}
++				if((map[m].flag.gvg_castle || map[m].flag.gvg_te_castle) && (sd->K_LOCK_SU_MEOWMEOW >= (battle_config.WOE_K_DELAY_SU_MEOWMEOW/Acceptable_Packet)))
++					clif_authfail_fd(sd->fd, 9); // Disconnect Player
++				else if(sd->K_LOCK_SU_MEOWMEOW >= (battle_config.K_DELAY_SU_MEOWMEOW/Acceptable_Packet))
++					clif_authfail_fd(sd->fd, 9); // Disconnect Player
++
++				sd->K_LOCK_SU_MEOWMEOW = sd->K_LOCK_SU_MEOWMEOW +1;
++			}
++			else
++			{
++				if(map[m].flag.gvg_castle || map[m].flag.gvg_te_castle)
++					sd->K_CHK_SU_MEOWMEOW = gettick() + battle_config.WOE_K_DELAY_SU_MEOWMEOW;
++				else
++					sd->K_CHK_SU_MEOWMEOW = gettick() + battle_config.K_DELAY_SU_MEOWMEOW;
++
++				sd->K_LOCK_SU_MEOWMEOW = 0;
++			}
++			break;
++		case SU_SPIRITOFLAND:
++			if(DIFF_TICK(sd->K_CHK_SU_SPIRITOFLAND,gettick())> 0){
++				if(show_delay){
++					sprintf(message_skdelay,"[ %i ] second(s) skill use delay",(sd->K_CHK_SU_SPIRITOFLAND - gettick())/k);
++					clif_messagecolor(&sd->bl,color_table[COLOR_LIGHT_GREEN],message_skdelay,false,SELF);
++				}
++				if((map[m].flag.gvg_castle || map[m].flag.gvg_te_castle) && (sd->K_LOCK_SU_SPIRITOFLAND >= (battle_config.WOE_K_DELAY_SU_SPIRITOFLAND/Acceptable_Packet)))
++					clif_authfail_fd(sd->fd, 9); // Disconnect Player
++				else if(sd->K_LOCK_SU_SPIRITOFLAND >= (battle_config.K_DELAY_SU_SPIRITOFLAND/Acceptable_Packet))
++					clif_authfail_fd(sd->fd, 9); // Disconnect Player
++
++				sd->K_LOCK_SU_SPIRITOFLAND = sd->K_LOCK_SU_SPIRITOFLAND +1;
++			}
++			else
++			{
++				if(map[m].flag.gvg_castle || map[m].flag.gvg_te_castle)
++					sd->K_CHK_SU_SPIRITOFLAND = gettick() + battle_config.WOE_K_DELAY_SU_SPIRITOFLAND;
++				else
++					sd->K_CHK_SU_SPIRITOFLAND = gettick() + battle_config.K_DELAY_SU_SPIRITOFLAND;
++
++				sd->K_LOCK_SU_SPIRITOFLAND = 0;
++			}
++			break;
++		case SU_CHATTERING:
++			if(DIFF_TICK(sd->K_CHK_SU_CHATTERING,gettick())> 0){
++				if(show_delay){
++					sprintf(message_skdelay,"[ %i ] second(s) skill use delay",(sd->K_CHK_SU_CHATTERING - gettick())/k);
++					clif_messagecolor(&sd->bl,color_table[COLOR_LIGHT_GREEN],message_skdelay,false,SELF);
++				}
++				if((map[m].flag.gvg_castle || map[m].flag.gvg_te_castle) && (sd->K_LOCK_SU_CHATTERING >= (battle_config.WOE_K_DELAY_SU_CHATTERING/Acceptable_Packet)))
++					clif_authfail_fd(sd->fd, 9); // Disconnect Player
++				else if(sd->K_LOCK_SU_CHATTERING >= (battle_config.K_DELAY_SU_CHATTERING/Acceptable_Packet))
++					clif_authfail_fd(sd->fd, 9); // Disconnect Player
++
++				sd->K_LOCK_SU_CHATTERING = sd->K_LOCK_SU_CHATTERING +1;
++			}
++			else
++			{
++				if(map[m].flag.gvg_castle || map[m].flag.gvg_te_castle)
++					sd->K_CHK_SU_CHATTERING = gettick() + battle_config.WOE_K_DELAY_SU_CHATTERING;
++				else
++					sd->K_CHK_SU_CHATTERING = gettick() + battle_config.K_DELAY_SU_CHATTERING;
++
++				sd->K_LOCK_SU_CHATTERING = 0;
++			}
++			break;
++		case SU_SPIRITOFSEA:
++			if(DIFF_TICK(sd->K_CHK_SU_SPIRITOFSEA,gettick())> 0){
++				if(show_delay){
++					sprintf(message_skdelay,"[ %i ] second(s) skill use delay",(sd->K_CHK_SU_SPIRITOFSEA - gettick())/k);
++					clif_messagecolor(&sd->bl,color_table[COLOR_LIGHT_GREEN],message_skdelay,false,SELF);
++				}
++				if((map[m].flag.gvg_castle || map[m].flag.gvg_te_castle) && (sd->K_LOCK_SU_SPIRITOFSEA >= (battle_config.WOE_K_DELAY_SU_SPIRITOFSEA/Acceptable_Packet)))
++					clif_authfail_fd(sd->fd, 9); // Disconnect Player
++				else if(sd->K_LOCK_SU_SPIRITOFSEA >= (battle_config.K_DELAY_SU_SPIRITOFSEA/Acceptable_Packet))
++					clif_authfail_fd(sd->fd, 9); // Disconnect Player
++
++				sd->K_LOCK_SU_SPIRITOFSEA = sd->K_LOCK_SU_SPIRITOFSEA +1;
++			}
++			else
++			{
++				if(map[m].flag.gvg_castle || map[m].flag.gvg_te_castle)
++					sd->K_CHK_SU_SPIRITOFSEA = gettick() + battle_config.WOE_K_DELAY_SU_SPIRITOFSEA;
++				else
++					sd->K_CHK_SU_SPIRITOFSEA = gettick() + battle_config.K_DELAY_SU_SPIRITOFSEA;
++
++				sd->K_LOCK_SU_SPIRITOFSEA = 0;
++			}
++			break;
++
++
++
++		default:
++			if(DIFF_TICK(sd->K_CHK_DEFAULT,gettick())> 0){
++				if(show_delay){
++					sprintf(message_skdelay,"[ %i ] second(s) skill use delay",(sd->K_CHK_DEFAULT - gettick())/k);
++					clif_messagecolor(&sd->bl,color_table[COLOR_LIGHT_GREEN],message_skdelay,false,SELF);
++				}
++				if((map[m].flag.gvg_castle || map[m].flag.gvg_te_castle) && (sd->K_LOCK_DEFAULT >= (battle_config.WOE_K_DELAY_DEFAULT/Acceptable_Packet)))
++					clif_authfail_fd(sd->fd, 9); // Disconnect Player
++				else if(sd->K_LOCK_DEFAULT >= (battle_config.K_DELAY_DEFAULT/Acceptable_Packet))
++					clif_authfail_fd(sd->fd, 9); // Disconnect Player
++
++				sd->K_LOCK_DEFAULT = sd->K_LOCK_DEFAULT +1;
++			}
++			else
++			{
++				if(map[m].flag.gvg_castle || map[m].flag.gvg_te_castle)
++					sd->K_CHK_DEFAULT = gettick() + battle_config.WOE_K_DELAY_DEFAULT;
++				else
++					sd->K_CHK_DEFAULT = gettick() + battle_config.K_DELAY_DEFAULT;
++
++				sd->K_LOCK_DEFAULT = 0;
++			}
++			break;
 +	}
 +	return 1;
 +}
@@ -18188,11 +18743,11 @@ Index: src/map/skill.c
  /**
   * Set map cell flag as skill unit effect
   * @param src Skill unit
-Index: src/map/skill.h
+Index: src/map/skill.hpp
 ===================================================================
---- src/map/skill.h	(revision 271)
-+++ src/map/skill.h	(working copy)
-@@ -26,6 +26,9 @@
+--- src/map/skill.hpp	(revision 26725)
++++ src/map/skill.hpp	(working copy)
+@@ -32,6 +32,9 @@
  #define SKILL_NAME_LENGTH 31 /// Max Skill Name length
  #define SKILL_DESC_LENGTH 31 /// Max Skill Desc length
  
@@ -18202,7 +18757,7 @@ Index: src/map/skill.h
  extern DBMap* skilldb_name2id;
  
  /// Constants to identify a skill's nk value (damage properties)
-@@ -460,6 +463,9 @@
+@@ -466,6 +469,9 @@
  void ext_skill_unit_onplace(struct skill_unit *unit, struct block_list *bl, unsigned int tick);
  int64 skill_unit_ondamaged(struct skill_unit *unit,int64 damage);
  
